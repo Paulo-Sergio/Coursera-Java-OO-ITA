@@ -3,6 +3,7 @@ package tarefa1.heranca;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
+import org.junit.Test;
 
 public class TesteContaEspecial extends TesteContaCorrente{
 
@@ -19,6 +20,7 @@ public class TesteContaEspecial extends TesteContaCorrente{
 		assertEquals(0, valorSacado);
 	}
 	
+	@Test
 	public void saqueMaiorQueSaldoDentroDoLimite() {
 		int valorSacado = cc.sacar(250);
 		assertEquals(-50, cc.saldo);
