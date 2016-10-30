@@ -14,9 +14,9 @@ public class Principal {
 		CarrinhoCompras cc = new CarrinhoCompras();
 		cc.adicionaProduto(p1, 2); // R$ 21
 		cc.adicionaProduto(p2, 1); // R$ 20,65
-		cc.adicionaProduto(p3, 5); // R$ 52,5
+		cc.adicionaProduto(p3, 5); // R$ 52,5 	obs: P3 é igual P1, por isso P1 vai ficar com qtd: 7
 		cc.adicionaProduto(p4, 3); // R$ 26,25
-		cc.adicionaProduto(p5, 2); // R$ 21
+		cc.adicionaProduto(p5, 2); // R$ 21 	obs: P5 tem mesmo codigo P1, mas tamanho diferentes (produtos diferentes)
 		cc.adicionaProduto(p6, 2); // R$ 60
 
 		cc.removeProduto(p3, 1); // 10,5

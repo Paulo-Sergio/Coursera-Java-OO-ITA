@@ -9,16 +9,16 @@ public class CarrinhoCompras {
 
 	public void adicionaProduto(Produto produto, int quantidade) {
 		if (verificaJaExiste(produto)) {
-			Integer qtdAtual = getProdutosNoCarrinho().get(produto);
+			Integer qtdAtual = this.produtosNoCarrinho.get(produto);
 			Integer qtdResult = qtdAtual + quantidade;
-			getProdutosNoCarrinho().put(produto, qtdResult);
+			this.produtosNoCarrinho.put(produto, qtdResult);
 		} else {
-			getProdutosNoCarrinho().put(produto, quantidade);
+			this.produtosNoCarrinho.put(produto, quantidade);
 		}
 	}
 
 	private boolean verificaJaExiste(Produto produto) {
-		for (Produto p : getProdutosNoCarrinho().keySet()) {
+		for (Produto p : this.produtosNoCarrinho.keySet()) {
 			if (p.equals(produto)) {
 				return true;
 			}
@@ -27,23 +27,23 @@ public class CarrinhoCompras {
 	}
 	
 	public void removeProduto(Produto produto, int quantidade) {
-		Integer qtdAtual = getProdutosNoCarrinho().get(produto);
+		Integer qtdAtual = this.produtosNoCarrinho.get(produto);
 		Integer qtdResult = qtdAtual - quantidade;
 		if (qtdResult > 0) {
-			getProdutosNoCarrinho().put(produto, qtdResult);
+			this.produtosNoCarrinho.put(produto, qtdResult);
 		} else {
-			getProdutosNoCarrinho().remove(produto);
+			this.produtosNoCarrinho.remove(produto);
 		}
 	}
 	
 	public void removerTudo(){
-		getProdutosNoCarrinho().clear();
+		this.produtosNoCarrinho.clear();
 	}
 	
 	public double valorTotalCompra() {
 		double totalPagar = 0;
-		for (Produto produto : getProdutosNoCarrinho().keySet()) {
-			Integer quantidade = getProdutosNoCarrinho().get(produto);
+		for (Produto produto : this.produtosNoCarrinho.keySet()) {
+			Integer quantidade = this.produtosNoCarrinho.get(produto);
 			totalPagar = (produto.getPreco() * quantidade) + totalPagar;
 		}
 		return totalPagar;
