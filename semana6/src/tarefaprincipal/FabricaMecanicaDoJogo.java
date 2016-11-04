@@ -1,13 +1,23 @@
 package tarefaprincipal;
 
+import java.io.FileNotFoundException;
+
 public class FabricaMecanicaDoJogo implements MecanicaDoJogo {
 
 	private String palavra;
 	private int pontos = 0;
 	private int vidas = 3;
 	
-	public FabricaMecanicaDoJogo(String palavra) {
-		this.palavra = palavra;
+	public void palavraResposta() {
+		String palavraRetirada = "";
+		try {
+			palavraRetirada = new BancoDePalavras().palavraRetirada();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		this.palavra = palavraRetirada;
 	}
 
 	@Override
@@ -28,12 +38,10 @@ public class FabricaMecanicaDoJogo implements MecanicaDoJogo {
 		}
 	}
 
-	@Override
 	public boolean isJogoContinua() {
 		return this.vidas > 0;
 	}
-	
-	@Override
+
 	public int getPontos() {
 		return pontos;
 	}

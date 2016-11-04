@@ -21,31 +21,33 @@ public class Principal {
 		System.out.println("2 - Jogo morte subita ? (vale 25 pontos por resposta)");
 		int mecanicaEscolhida = scannerMecanica.nextInt();
 
-		String palavra = new BancoDePalavras().palavraRetirada();
-		MecanicaDoJogo fabricaMecanicaDoJogo = new FabricaMecanicaDoJogo(palavra);
+		FabricaMecanicaDoJogo fabricaMecanicaDoJogo = new FabricaMecanicaDoJogo();
 		Scanner scanner = new Scanner(System.in);
 
 		if (mecanicaEscolhida == 1) {
 			while (fabricaMecanicaDoJogo.isJogoContinua()) {
-				String palavraEmbaralhadaContrario = embaralhadorContrario.palavraEmbaralhadaContrario(palavra);
+				fabricaMecanicaDoJogo.palavraResposta();
+				String palavraResposta = fabricaMecanicaDoJogo.getPalavra();
+				String palavraEmbaralhadaContrario = embaralhadorContrario.palavraEmbaralhadaContrario(palavraResposta);
 				System.out.println("A palavra embaralhada é: " + palavraEmbaralhadaContrario);
 				System.out.println("Qual a palavra correta ?");
 				String resposta = scanner.nextLine();
 				fabricaMecanicaDoJogo.mecanicaTresVidas(resposta);
-				
+
 			}
 		} else if (mecanicaEscolhida == 2) {
 			while (fabricaMecanicaDoJogo.isJogoContinua()) {
-				String palavraEmbaralhadaRandom = embaralhadorRandom.palavraEmbaralhadaRandom(palavra);
+				fabricaMecanicaDoJogo.palavraResposta();
+				String palavraResposta = fabricaMecanicaDoJogo.getPalavra();
+				String palavraEmbaralhadaRandom = embaralhadorRandom.palavraEmbaralhadaRandom(palavraResposta);
 				System.out.println("A palavra embaralhada é: " + palavraEmbaralhadaRandom);
 				System.out.println("Qual a palavra correta ?");
 				String resposta = scanner.nextLine();
 				fabricaMecanicaDoJogo.mecanicaMorteSubita(resposta);
-				
 			}
 		}
-		
-		System.out.println("Fim de jogo!!! Sua pontuação foi: " + fabricaMecanicaDoJogo.getPontos());
+
+		System.out.println("Fim de jogo!!! \nSua pontuação foi: " + fabricaMecanicaDoJogo.getPontos() + " pontos");
 
 		scannerMecanica.close();
 		scanner.close();
